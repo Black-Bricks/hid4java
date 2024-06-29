@@ -134,6 +134,16 @@ class HidDeviceManager {
 
   }
 
+  private boolean pauseScan = false;
+
+  public synchronized void pause() {
+    pauseScan = true;
+  }
+
+  public synchronized void resume() {
+    pauseScan = false;
+  }
+
   /**
    * Updates the device list by adding newly connected devices to it and by
    * removing no longer connected devices.
@@ -320,6 +330,7 @@ class HidDeviceManager {
                 Thread.currentThread().interrupt();
                 break;
               }
+              if (pauseScan) continue;
               scan();
             }
           }
