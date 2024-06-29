@@ -130,6 +130,14 @@ public class HidServices {
     hidDeviceManager.start();
   }
 
+  public void pause() {
+    hidDeviceManager.pause();
+  }
+
+  public void resume() {
+    hidDeviceManager.resume();
+  }
+
   /**
    * @param listener The listener to add
    */
